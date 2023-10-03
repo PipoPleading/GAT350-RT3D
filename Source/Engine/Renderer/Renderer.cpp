@@ -27,17 +27,35 @@ namespace nc
 		m_width = width;
 		m_height = height;
 
-		m_window = SDL_CreateWindow(title.c_str(), 100, 100, width, height, SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE);
+		m_window = SDL_CreateWindow(title.c_str(), 100, 100, width, height, SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE | SDL_WINDOW_OPENGL);
+
+		SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 4);
+		SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 3);
+
+		SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_COMPATIBILITY); //setting compatibility for old or new GL
+
+		SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1); //1 is true, renders the next frame as the current frame is shown
+		SDL_GL_SetAttribute(SDL_GL_ACCELERATED_VISUAL, 1); //uses hardware acceleration
+
+		SDL_GL_SetSwapInterval(1); //vSync, visual tear may occur
+
+		m_context = SDL_GL_CreateContext(m_window);
+		gladLoadGL(); //loads function to use gl, since microsoft despises it lol
+
+		glViewport(0, 0, width, height);
+
 	}
 
 	void Renderer::BeginFrame()
 	{
-		SDL_RenderClear(m_renderer);
+		//no namespaces, just gl 
+		glClearColor(1, 0, 0, 1);
+		glClear(GL_COLOR_BUFFER_BIT); //sets a z buffer, as to prevent things from drawing over one another
 	}
 
 	void Renderer::EndFrame()
 	{
-		SDL_RenderPresent(m_renderer);
+		SDL_GL_SwapWindow(m_window);
 	}
 
 	void Renderer::SetColor(uint8_t r, uint8_t g, uint8_t b, uint8_t a)
