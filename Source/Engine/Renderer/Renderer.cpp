@@ -16,7 +16,7 @@ namespace nc
 
 	void Renderer::Shutdown()
 	{
-		SDL_DestroyRenderer(m_renderer);
+		SDL_GL_DeleteContext(m_context);
 		SDL_DestroyWindow(m_window);
 		TTF_Quit();
 		IMG_Quit();
@@ -28,7 +28,6 @@ namespace nc
 		m_height = height;
 
 		m_window = SDL_CreateWindow(title.c_str(), 100, 100, width, height, SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE);
-		m_renderer = SDL_CreateRenderer(m_window, -1, SDL_RENDERER_PRESENTVSYNC | SDL_RENDERER_ACCELERATED);
 	}
 
 	void Renderer::BeginFrame()
