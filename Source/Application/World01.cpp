@@ -28,6 +28,11 @@ namespace nc
         renderer.SetColor(255, 255, 255, 255);
         renderer.DrawPoint(random(renderer.GetWidth()), random(renderer.GetHeight()));
 
+        for (int i = 0; i < 2500; i++) {
+            renderer.SetColor(random(256), random(256), random(256), 255);
+            renderer.DrawPoint(random(renderer.GetWidth()), random(renderer.GetHeight()));
+        }
+
         // post-render
         renderer.EndFrame();
     }
