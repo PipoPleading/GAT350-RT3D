@@ -49,7 +49,7 @@ namespace nc
 	void Renderer::BeginFrame()
 	{
 		//no namespaces, just gl 
-		glClearColor(1, 0, 0, 1);
+		glClearColor(0, 0, 0, 1);
 		glClear(GL_COLOR_BUFFER_BIT); //sets a z buffer, as to prevent things from drawing over one another
 	}
 
