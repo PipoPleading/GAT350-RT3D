@@ -96,6 +96,9 @@ namespace nc
         m_position.x += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_A) ? -dt : 0;
         m_position.x += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_D) ? dt : 0;
         m_time += dt;
+
+        GLint uniform = glGetUniformLocation(m_program->m_program, "time");
+        glUniform1f(uniform, m_time);
     }
 
     void World03::Draw(Renderer& renderer)

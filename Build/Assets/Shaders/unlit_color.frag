@@ -4,7 +4,10 @@ in layout(location = 0) vec3 color;
 
 out layout(location = 0) vec4 ocolor;
 
+uniform float time;
+
 void main()
 {
-	ocolor = vec4(1, 0, 0, 1);
+	vec3 ncolor = color * sin(time + 1);
+	ocolor = vec4(ncolor, 1);
 }
