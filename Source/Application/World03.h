@@ -1,7 +1,6 @@
 #pragma once
 #include "Framework/World.h"
 #include "Renderer/Renderer.h"
-#include "Core/Math/Vector2.h"
 #include <vector>
 
 namespace nc
@@ -16,9 +15,9 @@ namespace nc
 
 	private:
 		float m_angle = 0;
-		float m_time;
 		float m_speed = 5;
-		glm::vec3 m_position;
+
+		Transform m_transform;
 
 		GLuint m_vao = 0;
 		res_t<Program> m_program;

@@ -143,6 +143,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\Renderer\Gui.h" />
     <ClInclude Include="Core.h" />
     <ClInclude Include="FileIO.h" />
     <ClInclude Include="Json.h" />
@@ -160,6 +161,7 @@
     <ClInclude Include="Time.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\Renderer\Gui.cpp" />
     <ClCompile Include="FileIO.cpp" />
     <ClCompile Include="Json.cpp" />
     <ClCompile Include="Logger.cpp" />

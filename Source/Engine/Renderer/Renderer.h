@@ -2,7 +2,6 @@
 #include "Framework/System.h"
 #include "Font.h"
 #include "Model.h"
-#include "Text.h"
 #include "Texture.h"
 #include "Shader.h"
 #include "Program.h"
@@ -33,11 +32,6 @@ namespace nc
 		void DrawLine(float x1, float y1, float x2, float y2);
 		void DrawPoint(int x, int y);
 		void DrawPoint(float x, float y);
-
-		void DrawTexture(class Texture* texture, float x, float y, float angle = 0.0f);
-		void DrawTexture(class Texture* texture, const Transform& transform);
-		void DrawTexture(class Texture* texture, const Rect& source, const Transform& transform);
-		void DrawTexture(class Texture* texture, const Rect& source, const Transform& transform, const vec2& origin, bool flipH);
 
 		int GetWidth() const { return m_width; }
 		int GetHeight() const { return m_height; }
