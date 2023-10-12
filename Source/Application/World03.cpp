@@ -2,6 +2,7 @@
 #include "Framework/Framework.h"
 #include "Renderer/Renderer.h"
 #include "Input/InputSystem.h"
+#include "glm/glm/gtc/type_ptr.hpp"
 
 
 #define INTERLEAVE //
@@ -10,17 +11,20 @@ namespace nc
 {
     bool World03::Initialize()
     {
-        m_program = GET_RESOURCE(Program, "shaders/unlit_color.prog");
+        m_program = GET_RESOURCE(Program, "shaders/unlit_texture.prog");
         m_program->Use();
 
+        m_texture = GET_RESOURCE(Texture, "textures/llama.jpg");
+        m_texture->Bind();
+        m_texture->SetActive(GL_TEXTURE0);
+
         //preprocess directives
-#ifdef INTERLEAVE
 
        float vertexData[] = {
-           -0.8f, -0.8f, 0.0f,  0.0f, 1.0f, 1.0f,
-            0.8f, -0.8f, 0.0f,  0.6f, 0.0f, 0.6f,
-            0.8f,  0.8f, 0.0f,  1.0f, 0.0f, 1.0f
-            -0.8f, 0.8f, 0.0f,  0.0f, 0.0f, 0.0f
+           -0.8f, -0.8f, 0.0f,  0.0f, 1.0f, 1.0f,  0.0f, 0.0f,
+            0.8f, -0.8f, 0.0f,  0.6f, 0.0f, 0.6f,  1.0f, 0.0f,
+            0.8f,  0.8f, 0.0f,  1.0f, 0.0f, 1.0f,  1.0f, 1.0f,
+            -0.8f, 0.8f, 0.0f,  0.0f, 0.0f, 0.0f,  0.0f, 1.0f
         };
        GLuint vbo;
        //position
@@ -31,7 +35,7 @@ namespace nc
        glGenVertexArrays(1, &m_vao);
        glBindVertexArray(m_vao);
 
-       glBindVertexBuffer(0, vbo, 0, 6 * sizeof(GLfloat)); //stride is the distance between data chunks, so 6 here
+       glBindVertexBuffer(0, vbo, 0, 8 * sizeof(GLfloat)); //stride is the distance between data chunks, so 6 here
 
        //position
        glEnableVertexAttribArray(0); 
@@ -42,50 +46,14 @@ namespace nc
        glEnableVertexAttribArray(1);
        glVertexAttribFormat(1, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat));
        glVertexAttribBinding(1, 0);
-#else
 
-        // Vertex data
-        float positionData[] = {
-            -0.8f, -0.8f, 0.0f,
-             0.8f, -0.8f, 0.0f,
-             0.8f,  0.8f, 0.0f,
-            -0.8f, 0.8f, 0.0f
-    };
+       //color
+       glEnableVertexAttribArray(2);
+       glVertexAttribFormat(2, 2, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat));
+       glVertexAttribBinding(2, 0);
 
-        float colorData[] =
-        {
-            1.0f, 0.0f, 1.0f,
-            1.0f, 0.0f, 1.0f,
-            1.0f, 0.0f, 1.0f,
-            1.0f, 0.0f, 1.0f
-        };
+       //deleted interleaves
 
-        GLuint vbo[2];
-        glGenBuffers(2, vbo);
-        glBindBuffer(GL_ARRAY_BUFFER, vbo[0]);
-        glBufferData(GL_ARRAY_BUFFER, sizeof(positionData), positionData, GL_STATIC_DRAW);
-
-        glBindBuffer(GL_ARRAY_BUFFER, vbo[1]);
-        glBufferData(GL_ARRAY_BUFFER, sizeof(colorData), colorData, GL_STATIC_DRAW);
-
-
-        glGenVertexArrays(1, &m_vao);
-        glBindVertexArray(m_vao);
-
-        // Position
-        glEnableVertexAttribArray(0);
-        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
-        glBindVertexBuffer(0, vbo[0], 0, sizeof(GLfloat) * 3);
-
-        // Color
-        glEnableVertexAttribArray(1);
-        glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 0, 0);
-        glBindVertexBuffer(1, vbo[1], 0, sizeof(GLfloat) * 3);
-
-
-#endif //INTERLEAVE
-
-        m_transform.position.z = -10;
        return true;
     }
 
@@ -95,8 +63,21 @@ namespace nc
 
     void World03::Update(float dt)
     {
-        //m_angle += 180 * dt;
-        m_transform.rotation.z += 180 * dt;
+        ENGINE.GetSystem<Gui>()->BeginFrame();
+
+
+        ImGui::Begin("Transform");
+        ImGui::DragFloat3("Position", &m_transform.position[0]);
+        ImGui::DragFloat3("Rotation", &m_transform.rotation[0]);
+        ImGui::DragFloat3("Scale", &m_transform.scale[0]);
+        ImGui::DragFloat2("Offset", &m_offset[0]);
+        ImGui::DragFloat2("Tile", &m_tile[0]);
+        ImGui::End();
+
+        m_program->SetUniform("offset", m_offset);
+        m_program->SetUniform("tiling", m_tile);
+
+        //m_transform.rotation.z += 180 * dt;
 
         //controls
         m_transform.position.x += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_A) ? -dt * m_speed : 0;
@@ -108,7 +89,9 @@ namespace nc
         m_transform.position.y += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_S) ? -dt * m_speed: 0;
         m_transform.position.y += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_W) ? dt * m_speed : 0;
 
-        //m_transo += dt;
+        m_time += dt;
+
+
 
         //model matrix
         //glm::mat4 position = glm::translate(glm::mat4{ 1 }, m_position);
@@ -117,7 +100,7 @@ namespace nc
         m_program->SetUniform("model", m_transform.GetMatrix());
 
         //view matrix
-        glm::mat4 view = glm::lookAt(glm::vec3{ 0, 4, 5 }, glm::vec3{ 0 ,0 ,0 }, glm::vec3{ 0, 1, 0 });
+        glm::mat4 view = glm::lookAt(glm::vec3{ 0, 0, 5 }, glm::vec3{ 0 ,0 ,3 }, glm::vec3{ 0, 1, 0 });
         m_program->SetUniform("view", view);
         //uniform = glGetUniformLocation(m_program->m_program, "view");
         //glUniformMatrix4fv(uniform, 1, GL_FALSE, glm::value_ptr(view));
@@ -127,6 +110,8 @@ namespace nc
         m_program->SetUniform("projection", projection);/*
         uniform = glGetUniformLocation(m_program->m_program, "projection");
         glUniformMatrix4fv(uniform, 1, GL_FALSE, glm::value_ptr(projection));*/
+
+        ENGINE.GetSystem<Gui>()->EndFrame();
     }
 
     void World03::Draw(Renderer& renderer)
@@ -136,7 +121,10 @@ namespace nc
 
         // render
         glBindVertexArray(m_vao);
-        glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+        glDrawArrays(GL_QUADS, 0, 4);
+
+        ENGINE.GetSystem<Gui>()->Draw();
+
 
         // post-render
         renderer.EndFrame();

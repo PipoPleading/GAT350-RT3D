@@ -5,8 +5,9 @@
 #include "Texture.h"
 #include "Shader.h"
 #include "Program.h"
-#include <glad/include/glad/glad.h>
+#include "Gui.h"
 
+#include <glad/include/glad/glad.h>
 #include <SDL2-2.28.4/include/SDL.h>
 #include <string>
 
@@ -36,8 +37,8 @@ namespace nc
 		int GetWidth() const { return m_width; }
 		int GetHeight() const { return m_height; }
 
-		friend class Text;
 		friend class Texture;
+		friend class Gui;
 
 	private:
 		int m_width = 0;
