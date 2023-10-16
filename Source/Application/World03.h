@@ -14,7 +14,6 @@ namespace nc
 		void Draw(Renderer& renderer) override;
 
 	private:
-		float m_angle = 0;
 		float m_time = 0;
 		float m_speed = 5;
 
@@ -24,6 +23,7 @@ namespace nc
 		//GLuint m_vao = 0;
 		res_t<Program> m_program;
 		res_t<Texture> m_texture;
+		res_t<Material> m_material;
 
 		glm::vec2 m_offset;
 		glm::vec2 m_tile = { 1.0f, 1.0f };

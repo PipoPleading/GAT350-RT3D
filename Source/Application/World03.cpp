@@ -11,12 +11,14 @@ namespace nc
 {
     bool World03::Initialize()
     {
-        m_program = GET_RESOURCE(Program, "shaders/unlit_texture.prog");
-        m_program->Use();
+        m_material = GET_RESOURCE(Material, "materials/quad.mtrl");
 
-        m_texture = GET_RESOURCE(Texture, "textures/llama.jpg");
-        m_texture->Bind();
-        m_texture->SetActive(GL_TEXTURE0);
+        //m_program = GET_RESOURCE(Program, "shaders/unlit_texture.prog");
+        //m_program->Use();
+
+        //m_texture = GET_RESOURCE(Texture, "textures/llama.jpg");
+        //m_texture->Bind();
+        //m_texture->SetActive(GL_TEXTURE0);
 
         //preprocess directives
 
@@ -54,11 +56,6 @@ namespace nc
         ImGui::DragFloat2("Tile", &m_tile[0]);
         ImGui::End();
 
-        m_program->SetUniform("offset", m_offset);
-        m_program->SetUniform("tiling", m_tile);
-
-        //m_transform.rotation.z += 180 * dt;
-
         //controls
         m_transform.position.x += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_A) ? -dt * m_speed : 0;
         m_transform.position.x += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_D) ? dt * m_speed : 0;
@@ -71,21 +68,18 @@ namespace nc
 
         m_time += dt;
 
-        //model matrix
-        //glm::mat4 position = glm::translate(glm::mat4{ 1 }, m_position);
-        //glm::mat4 rotation = glm::rotate(glm::mat4{ 1 }, m_angle, glm::vec3{ 0, 0, 1 });
-        //glm::mat4 model = position * rotation;
-        m_program->SetUniform("model", m_transform.GetMatrix());
+        m_material->ProcessGui();
+        m_material->Bind(); //allows you to bind different materials
+
+        m_material->GetProgram()->SetUniform("model", m_transform.GetMatrix());
 
         //view matrix
         glm::mat4 view = glm::lookAt(glm::vec3{ 0, 0, 5 }, glm::vec3{ 0 ,0 ,3 }, glm::vec3{ 0, 1, 0 });
-        m_program->SetUniform("view", view);
-        //uniform = glGetUniformLocation(m_program->m_program, "view");
-        //glUniformMatrix4fv(uniform, 1, GL_FALSE, glm::value_ptr(view));
+        m_material->GetProgram()->SetUniform("view", view);
 
         // projection matrix
         glm::mat4 projection = glm::perspective(glm::radians(70.0f), 800.0f/600.0f, 0.01f, 100.0f);
-        m_program->SetUniform("projection", projection);/*
+        m_material->GetProgram()->SetUniform("projection", projection);/*
         uniform = glGetUniformLocation(m_program->m_program, "projection");
         glUniformMatrix4fv(uniform, 1, GL_FALSE, glm::value_ptr(projection));*/
 

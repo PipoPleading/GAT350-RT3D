@@ -1,6 +1,6 @@
 {
-  "program":"shaders/unlit_texture.prog",
-  "textures": [ "textures/llama.png" ],
+  "program":"shaders/unlit_multi_texture.prog",
+  "textures": [ "textures/llama.tga", "textures/pencils.png" ],
   "color":[
       1,
       1,
