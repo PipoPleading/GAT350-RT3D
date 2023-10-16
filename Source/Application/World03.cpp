@@ -34,37 +34,6 @@ namespace nc
        m_vertexBuffer->SetAttribute(1, 3, 8 * sizeof(GLfloat), 3 * sizeof(float));  // color 
        m_vertexBuffer->SetAttribute(2, 2, 8 * sizeof(GLfloat), 6 * sizeof(float));  // texcoord
 
-       
-
-       // old code 
-
-       ////position
-       //glGenBuffers(1, &vbo);
-       //glBindBuffer(GL_ARRAY_BUFFER, vbo);
-       //glBufferData(GL_ARRAY_BUFFER, sizeof(vertexData), vertexData , GL_STATIC_DRAW);
-      
-       //glGenVertexArrays(1, &m_vao);
-       //glBindVertexArray(m_vao);
-
-       //glBindVertexBuffer(0, vbo, 0, 8 * sizeof(GLfloat)); //stride is the distance between data chunks, so 6 here
-
-       ////position
-       //glEnableVertexAttribArray(0); 
-       //glVertexAttribFormat(0, 3, GL_FLOAT, GL_FALSE, 0);
-       //glVertexAttribBinding(0, 0);
-
-       ////color
-       //glEnableVertexAttribArray(1);
-       //glVertexAttribFormat(1, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat));
-       //glVertexAttribBinding(1, 0);
-
-       ////color
-       //glEnableVertexAttribArray(2);
-       //glVertexAttribFormat(2, 2, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat));
-       //glVertexAttribBinding(2, 0);
-
-       //deleted interleaves
-
        return true;
     }
 
@@ -94,15 +63,13 @@ namespace nc
         m_transform.position.x += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_A) ? -dt * m_speed : 0;
         m_transform.position.x += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_D) ? dt * m_speed : 0;
 
-        m_transform.position.z += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_BACKSPACE) ? -dt * m_speed : 0;
-        m_transform.position.z += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_SPACE) ? dt * m_speed : 0;
+        m_transform.position.z += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_SPACE) ? -dt * m_speed : 0;
+        m_transform.position.z += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_BACKSPACE) ? dt * m_speed : 0;
 
         m_transform.position.y += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_S) ? -dt * m_speed: 0;
         m_transform.position.y += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_W) ? dt * m_speed : 0;
 
         m_time += dt;
-
-
 
         //model matrix
         //glm::mat4 position = glm::translate(glm::mat4{ 1 }, m_position);
@@ -134,19 +101,5 @@ namespace nc
         ENGINE.GetSystem<Gui>()->Draw();
         // post-render
         renderer.EndFrame();
-
-        // old code
-        
-        //// pre-render
-        //renderer.BeginFrame();
-
-        //// render
-        //glBindVertexArray(m_vao);
-        //glDrawArrays(GL_QUADS, 0, 4);
-
-        //ENGINE.GetSystem<Gui>()->Draw();
-
-
-        // post-render
     }
 }
