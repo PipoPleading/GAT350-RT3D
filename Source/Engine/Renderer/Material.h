@@ -21,9 +21,13 @@ namespace nc
 		void ProcessGui();
 
 	public:
-		glm::vec4 color; //1 
-		glm::vec2 tiling; //1,1
-		glm::vec2 offset; //0,0
+		glm::vec4 color{ 1 }; //1 
+		glm::vec2 tiling{ 1, 1 }; //1,1
+		glm::vec2 offset{ 0, 0 }; //0,0
+
+		glm::vec3 ambientLight{ 0.2 };
+		glm::vec3 diffuseLight{ 1 };
+		glm::vec3 lPosition{ 0, 0.8, 0 };
 
 	private:
 		res_t<Program> m_program;

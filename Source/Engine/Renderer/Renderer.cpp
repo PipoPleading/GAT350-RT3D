@@ -63,6 +63,11 @@ namespace nc
 		// z axis for pixel drawing, painter's algorithm
 		glEnable(GL_DEPTH_TEST);
 		glDepthFunc(GL_LESS);
+
+		// mario galaxy sublevel view rendering
+		glEnable(GL_CULL_FACE);
+		glCullFace(GL_BACK); // cull the front instead of back 
+		glFrontFace(GL_CCW);
 	}
 
 	void Renderer::BeginFrame()

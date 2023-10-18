@@ -20,5 +20,6 @@ namespace nc
 
 		Transform m_transform;
 		res_t<Model> m_model;
+		
 	};
 }
