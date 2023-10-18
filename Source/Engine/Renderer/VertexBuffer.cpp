@@ -49,18 +49,18 @@ namespace nc
 		switch (m_indexType)
 		{
 		case GL_UNSIGNED_BYTE:
-			size = m_indexCount * sizeof(GL_UNSIGNED_BYTE); //<get number of bytes in GLubyte>;
+			size = m_indexCount * sizeof(GLubyte); //<get number of bytes in GLubyte>;
 			break;
 		case GL_UNSIGNED_SHORT:
-			size = m_indexCount * sizeof(GL_UNSIGNED_SHORT); //<get number of bytes in GLushort>;
+			size = m_indexCount * sizeof(GLushort); //<get number of bytes in GLushort>;
 			break;
 		case GL_UNSIGNED_INT:
-			size = m_indexCount * sizeof(GL_UNSIGNED_INT); //<get number of bytes in GLuint>;
+			size = m_indexCount * sizeof(GLuint); //<get number of bytes in GLuint>;
 			break;
 		}
 
 		// copy data into index buffer
-		glBufferData(GL_ARRAY_BUFFER, sizeof(data), data, GL_STATIC_DRAW);
+		glBufferData(GL_ELEMENT_ARRAY_BUFFER, size, data, GL_STATIC_DRAW);
 	}
 		
 	void VertexBuffer::SetAttribute(int attribindex, GLint size, GLsizei stride, GLuint offset)

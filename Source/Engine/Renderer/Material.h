@@ -16,14 +16,14 @@ namespace nc
 		virtual bool Create(std::string filename, ...) override;
 
 		void Bind();
-		void ProcessGui();
 
 		res_t<Program> GetProgram() { return m_program; }
+		void ProcessGui();
 
 	public:
-		glm::vec4 color;
-		glm::vec2 tiling;
-		glm::vec2 offset;
+		glm::vec4 color; //1 
+		glm::vec2 tiling; //1,1
+		glm::vec2 offset; //0,0
 
 	private:
 		res_t<Program> m_program;

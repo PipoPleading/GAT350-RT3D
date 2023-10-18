@@ -13,13 +13,6 @@ namespace nc
     {
         m_material = GET_RESOURCE(Material, "materials/quad.mtrl");
 
-        //m_program = GET_RESOURCE(Program, "shaders/unlit_texture.prog");
-        //m_program->Use();
-
-        //m_texture = GET_RESOURCE(Texture, "textures/llama.jpg");
-        //m_texture->Bind();
-        //m_texture->SetActive(GL_TEXTURE0);
-
         //preprocess directives
 
        float vertexData[] = {
@@ -30,7 +23,7 @@ namespace nc
         };
        //GLuint vbo;
 
-       m_vertexBuffer = GET_RESOURCE(VertexBuffer, "vb");
+       m_vertexBuffer = std::make_shared<VertexBuffer>();
        m_vertexBuffer->CreateVertexBuffer(sizeof(vertexData), 4, vertexData);
        m_vertexBuffer->SetAttribute(0, 3, 8 * sizeof(GLfloat), 0);                  // position 
        m_vertexBuffer->SetAttribute(1, 3, 8 * sizeof(GLfloat), 3 * sizeof(float));  // color 

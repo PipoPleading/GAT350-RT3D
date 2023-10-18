@@ -59,13 +59,19 @@ namespace nc
 		glEnable(GL_BLEND);
 
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA); // this tels it how textures blend
+
+		// z axis for pixel drawing, painter's algorithm
+		glEnable(GL_DEPTH_TEST);
+		glDepthFunc(GL_LESS);
 	}
 
 	void Renderer::BeginFrame()
 	{
 		//no namespaces, just gl 
 		glClearColor(0, 0, 0, 1);
-		glClear(GL_COLOR_BUFFER_BIT); //sets a z buffer, as to prevent things from drawing over one another
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+		//bitmasks storing a buncha data of floats into one int in a bitwise manner
+		//sets a z buffer, as to prevent things from drawing over one another
 	}
 
 	void Renderer::EndFrame()
@@ -160,20 +166,20 @@ namespace nc
 			typeString = "Unknown";
 		}
 
-		switch (severity)
-		{
-		case GL_DEBUG_SEVERITY_HIGH:
-			ASSERT_LOG(0, "OPENGL Source: " << sourceString << " Type: " << typeString << "(" << id << ") | " << message);
-			break;
-		case GL_DEBUG_SEVERITY_MEDIUM:
-			ERROR_LOG("OPENGL Source: " << sourceString << " Type: " << typeString << "(" << id << ") | " << message);
-			break;
-		case GL_DEBUG_SEVERITY_LOW:
-			WARNING_LOG("OPENGL Source: " << sourceString << " Type: " << typeString << "(" << id << ") | " << message);
-			break;
-		case GL_DEBUG_SEVERITY_NOTIFICATION:
-			INFO_LOG("OPENGL Source: " << sourceString << " Type: " << typeString << "(" << id << ") | " << message);
-			break;
-		}
+		//switch (severity)
+		//{
+		//case GL_DEBUG_SEVERITY_HIGH:
+		//	ASSERT_LOG(0, "OPENGL Source: " << sourceString << " Type: " << typeString << "(" << id << ") | " << message);
+		//	break;
+		//case GL_DEBUG_SEVERITY_MEDIUM:
+		//	ERROR_LOG("OPENGL Source: " << sourceString << " Type: " << typeString << "(" << id << ") | " << message);
+		//	break;
+		//case GL_DEBUG_SEVERITY_LOW:
+		//	WARNING_LOG("OPENGL Source: " << sourceString << " Type: " << typeString << "(" << id << ") | " << message);
+		//	break;
+		//case GL_DEBUG_SEVERITY_NOTIFICATION:
+		//	INFO_LOG("OPENGL Source: " << sourceString << " Type: " << typeString << "(" << id << ") | " << message);
+		//	break;
+		//}
 	}
 }

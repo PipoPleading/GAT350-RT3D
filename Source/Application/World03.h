@@ -1,6 +1,7 @@
 #pragma once
 #include "Framework/World.h"
 #include "Renderer/Renderer.h"
+#include "Core/Math/Transform.h"
 #include <vector>
 
 namespace nc
@@ -24,6 +25,7 @@ namespace nc
 		res_t<Program> m_program;
 		res_t<Texture> m_texture;
 		res_t<Material> m_material;
+
 
 		glm::vec2 m_offset;
 		glm::vec2 m_tile = { 1.0f, 1.0f };

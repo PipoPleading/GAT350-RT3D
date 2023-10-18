@@ -12,6 +12,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Engine", "Engine", "{9BC13D3F-DDF4-4B94-A612-AE059A2887FB}"
 	ProjectSection(SolutionItems) = preProject
 		Source\Application\World01.h = Source\Application\World01.h
+		Source\Application\World03.h = Source\Application\World03.h
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{194AA1A2-EF93-4423-A6E4-9BBD2B8C3F5B}"
