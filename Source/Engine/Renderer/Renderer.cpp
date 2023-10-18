@@ -66,7 +66,7 @@ namespace nc
 
 		// mario galaxy sublevel view rendering
 		glEnable(GL_CULL_FACE);
-		glCullFace(GL_BACK); // cull the front instead of back 
+		glCullFace(GL_FRONT); // cull the front instead of back 
 		glFrontFace(GL_CCW);
 	}
 
