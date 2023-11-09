@@ -6,7 +6,7 @@
 namespace nc
 {
 	void APIENTRY DebugCallback(GLenum source, GLenum type, GLuint id,
-		GLenum severity, GLsizei length, const GLchar* message, const void* param);
+		GLenum severity, GLsizei length, const GLchar* msg, const void* param);
 
 	bool Renderer::Initialize()
 	{
@@ -31,23 +31,22 @@ namespace nc
 		m_height = height;
 
 		m_window = SDL_CreateWindow(title.c_str(), 100, 100, width, height, SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE | SDL_WINDOW_OPENGL);
-
+		
 		SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 4);
 		SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 3);
+		SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_COMPATIBILITY);
 
-		SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_COMPATIBILITY); //setting compatibility for old or new GL
+		SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
+		SDL_GL_SetAttribute(SDL_GL_ACCELERATED_VISUAL, 1);
 
-		SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1); //1 is true, renders the next frame as the current frame is shown
-		SDL_GL_SetAttribute(SDL_GL_ACCELERATED_VISUAL, 1); //uses hardware acceleration
-
-		SDL_GL_SetSwapInterval(1); //vSync, visual tear may occur
+		SDL_GL_SetSwapInterval(1);
 
 		m_context = SDL_GL_CreateContext(m_window);
-		gladLoadGL(); //loads function to use gl, since microsoft despises it lol
+		gladLoadGL();
 
 		glEnable(GL_DEBUG_OUTPUT);
 		glDebugMessageCallback(DebugCallback, 0);
-
+		// disable all messages with severity `GL_DEBUG_SEVERITY_NOTIFICATION`
 		glDebugMessageControl(
 			GL_DONT_CARE,
 			GL_DONT_CARE,
@@ -55,28 +54,24 @@ namespace nc
 			0, NULL,
 			GL_FALSE);
 
+
 		glViewport(0, 0, width, height);
 		glEnable(GL_BLEND);
-
-		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA); // this tels it how textures blend
-
-		// z axis for pixel drawing, painter's algorithm
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+		
 		glEnable(GL_DEPTH_TEST);
 		glDepthFunc(GL_LESS);
 
-		// mario galaxy sublevel view rendering
 		glEnable(GL_CULL_FACE);
-		glCullFace(GL_BACK); // cull the front instead of back 
+		glCullFace(GL_BACK);
 		glFrontFace(GL_CCW);
 	}
 
-	void Renderer::BeginFrame()
+	void Renderer::BeginFrame(const glm::vec3& color)
 	{
-		//no namespaces, just gl 
-		glClearColor(0, 0, 0, 1);
+		glDepthMask(GL_TRUE);
+		glClearColor(color.r, color.b, color.g, 1);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-		//bitmasks storing a buncha data of floats into one int in a bitwise manner
-		//sets a z buffer, as to prevent things from drawing over one another
 	}
 
 	void Renderer::EndFrame()
@@ -108,12 +103,22 @@ namespace nc
 	{
 		SDL_RenderDrawPointF(m_renderer, x, y);
 	}
-		
+
+	void Renderer::SetViewPort(int width, int height)
+	{
+		glViewport(0, 0, width, height);
+	}
+
+	void Renderer::ResetViewPort()
+	{
+		glViewport(0, 0, m_width, m_height);
+	}
+
 	void APIENTRY DebugCallback(GLenum source, GLenum type, GLuint id,
 		GLenum severity, GLsizei length, const GLchar* message, const void* param) {
 
 		std::string sourceString;
-		switch (source)
+		switch (source) 
 		{
 		case GL_DEBUG_SOURCE_WINDOW_SYSTEM:
 			sourceString = "WindowSys";
@@ -138,7 +143,7 @@ namespace nc
 		}
 
 		std::string typeString;
-		switch (type)
+		switch (type) 
 		{
 		case GL_DEBUG_TYPE_ERROR:
 			typeString = "Error";
@@ -171,20 +176,20 @@ namespace nc
 			typeString = "Unknown";
 		}
 
-		//switch (severity)
-		//{
-		//case GL_DEBUG_SEVERITY_HIGH:
-		//	ASSERT_LOG(0, "OPENGL Source: " << sourceString << " Type: " << typeString << "(" << id << ") | " << message);
-		//	break;
-		//case GL_DEBUG_SEVERITY_MEDIUM:
-		//	ERROR_LOG("OPENGL Source: " << sourceString << " Type: " << typeString << "(" << id << ") | " << message);
-		//	break;
-		//case GL_DEBUG_SEVERITY_LOW:
-		//	WARNING_LOG("OPENGL Source: " << sourceString << " Type: " << typeString << "(" << id << ") | " << message);
-		//	break;
-		//case GL_DEBUG_SEVERITY_NOTIFICATION:
-		//	INFO_LOG("OPENGL Source: " << sourceString << " Type: " << typeString << "(" << id << ") | " << message);
-		//	break;
-		//}
+		switch (severity) 
+		{
+		case GL_DEBUG_SEVERITY_HIGH:
+			ASSERT_LOG(0, "OPENGL Source: " << sourceString << " Type: " << typeString << "(" << id << ") | " << message);
+			break;
+		case GL_DEBUG_SEVERITY_MEDIUM:
+			ERROR_LOG("OPENGL Source: " << sourceString << " Type: " << typeString << "(" << id << ") | " << message);
+			break;
+		case GL_DEBUG_SEVERITY_LOW:
+			WARNING_LOG("OPENGL Source: " << sourceString << " Type: " << typeString << "(" << id << ") | " << message);
+			break;
+		case GL_DEBUG_SEVERITY_NOTIFICATION:
+			INFO_LOG("OPENGL Source: " << sourceString << " Type: " << typeString << "(" << id << ") | " << message);
+			break;
+		}
 	}
 }

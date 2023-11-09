@@ -17,7 +17,7 @@ namespace nc
 		}
 
 		GetSystem<Renderer>()->CreateWindow("GAT350", 1280, 720);
-
+		
 		m_systems.push_back(std::move(std::make_unique<Gui>()));
 		GetSystem<Gui>()->Initialize();
 
@@ -41,7 +41,7 @@ namespace nc
 		SDL_Event event;
 		SDL_PollEvent(&event);
 		GetSystem<Gui>()->ProcessEvent(event);
-
+				
 		// update time
 		m_time.Tick();
 

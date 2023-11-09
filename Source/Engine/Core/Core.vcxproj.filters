@@ -55,7 +55,7 @@
     <ClInclude Include="Math\Rect.h">
       <Filter>Source\Math</Filter>
     </ClInclude>
-    <ClInclude Include="..\Renderer\Gui.h">
+    <ClInclude Include="StringUtils.h">
       <Filter>Source</Filter>
     </ClInclude>
   </ItemGroup>
@@ -78,8 +78,11 @@
     <ClCompile Include="Math\Transform.cpp">
       <Filter>Source\Math</Filter>
     </ClCompile>
-    <ClCompile Include="..\Renderer\Gui.cpp">
+    <ClCompile Include="StringUtils.cpp">
       <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\MathUtils.cpp">
+      <Filter>Source\Math</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -1,1 +1,8 @@
-INFO: Main.cpp(13) Initialize Engine...
+INFO: Factory.h(74) Class registered: RotateComponent
+INFO: Factory.h(74) Class registered: ModelComponent
+INFO: Factory.h(74) Class registered: LightComponent
+INFO: Factory.h(74) Class registered: EnginePhysicsComponent
+INFO: Factory.h(74) Class registered: CameraController
+INFO: Factory.h(74) Class registered: CameraComponent
+INFO: Factory.h(74) Class registered: Actor
+INFO: Main.cpp(15) Initialize Engine...

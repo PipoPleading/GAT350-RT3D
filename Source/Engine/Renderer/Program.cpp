@@ -34,6 +34,9 @@ namespace nc
 			if (!shader)
 			{
 				ERROR_LOG("Could not get shader: " << vertexShader);
+				glDeleteProgram(m_program);
+				m_program = 0;
+
 				return false;
 			}
 			AddShader(shader);
@@ -48,6 +51,9 @@ namespace nc
 			if (!shader)
 			{
 				ERROR_LOG("Could not get shader: " << fragmentShader);
+				glDeleteProgram(m_program);
+				m_program = 0;
+
 				return false;
 			}
 

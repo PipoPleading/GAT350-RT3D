@@ -22,12 +22,12 @@ namespace nc
 
 		if (!scene || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode)
 		{
-			WARNING_LOG("Could not load assimp file %s" << importer.GetErrorString());
+			WARNING_LOG("Could not load assimp file " << filename << " error string: " << importer.GetErrorString());
 			return false;
 		}
 
 		glm::mat4 mt = glm::translate(translate);
-		glm::mat4 mr = glm::eulerAngleYXZ(glm::radians(rotation.y),glm::radians(rotation.x),glm::radians(rotation.z));
+		glm::mat4 mr = glm::eulerAngleYXZ(glm::radians(rotation.y), glm::radians(rotation.x), glm::radians(rotation.z));
 		glm::mat4 ms = glm::scale(scale);
 
 		glm::mat4 mx = mt * mr * ms;
@@ -39,11 +39,7 @@ namespace nc
 
 	void Model::Draw(GLenum primitive)
 	{
-		m_material->Bind();
 		m_vertexBuffer->Draw(primitive);
-
-		//<bind material>
-		//<draw the vertex buffer passing in the primitive>
 	}
 
 	void Model::ProcessNode(aiNode* node, const aiScene* scene, const glm::mat4& transform)
@@ -71,11 +67,11 @@ namespace nc
 			vertex_t vertex;
 
 			vertex.position = transform * glm::vec4{ mesh->mVertices[i].x, mesh->mVertices[i].y, mesh->mVertices[i].z, 1 };
-			vertex.normal = transform * glm::vec4{ mesh->mNormals[i].x, mesh->mNormals[i].y, mesh->mNormals[i].z, 0 };
+			vertex.normal = glm::normalize(transform * glm::vec4{ mesh->mNormals[i].x, mesh->mNormals[i].y, mesh->mNormals[i].z, 0 });
 
 			if (mesh->mTangents)
 			{
-				vertex.tangent = transform * glm::vec4{ mesh->mTangents[i].x, mesh->mTangents[i].y, mesh->mTangents[i].z, 0 };
+				vertex.tangent = glm::normalize(transform * glm::vec4{ mesh->mTangents[i].x, mesh->mTangents[i].y, mesh->mTangents[i].z, 0 });
 			}
 			else
 			{
