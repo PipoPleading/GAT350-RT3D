@@ -50,16 +50,17 @@ namespace nc
         //set post process gui
         ImGui::Begin("Post-Process");
         ImGui::SliderFloat("Blend", &m_blend, 0, 1);
+
         bool effect = m_params & INVERT_MASK;
         if (ImGui::Checkbox("Invert", &effect))
         {
-            (effect) ?  m_params |= INVERT_MASK : m_params ^= INVERT_MASK; //exclusive or would switch the bit off
+            (effect) ?  m_params |= INVERT_MASK : m_params &= ~INVERT_MASK; //~ flips the bits
         }
 
         effect = m_params & GRAYSCALE_MASK;
         if (ImGui::Checkbox("Grayscale", &effect))
         {
-            (effect) ? m_params |= GRAYSCALE_MASK : m_params ^= GRAYSCALE_MASK; //exclusive or would switch the bit off
+            (effect) ? m_params |= GRAYSCALE_MASK : m_params &= ~GRAYSCALE_MASK; //exclusive or would switch the bit off
         }
 
         ImGui::End();
