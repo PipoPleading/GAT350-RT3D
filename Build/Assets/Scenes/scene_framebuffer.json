@@ -18,7 +18,7 @@
 				},
 				{
 					"type": "RotateComponent",
-					"euler": [ 0, 1000, 0 ]
+					"euler": [ 0, 20, 0 ]
 				}
 			]
 		},
@@ -77,16 +77,11 @@
 			"persistent": true,
 			"active": true,
 			"prototype": false,
-			"transform": {
-				"position": [ 1, 0, 1 ],
-				"scale": [ 1, 1, 1 ],
-				"rotation": [ 0, 0, 0 ]
-			},
 			"components": [
 				{
 					"type": "ModelComponent",
 					"modelName": "models/cube.obj",
-					"materialName": "materials/framebuffer.mtrl"
+					"materialName": "materials/postprocess.mtrl"
 				}
 			]
 		}

@@ -215,6 +215,9 @@
     <None Include="..\..\Build\Assets\Shaders\postprocess.frag">
       <Filter>Shaders</Filter>
     </None>
+    <None Include="..\..\Build\Assets\Materials\postprocess.mtrl">
+      <Filter>Materials</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\..\Build\Assets\Materials\pencils.png">

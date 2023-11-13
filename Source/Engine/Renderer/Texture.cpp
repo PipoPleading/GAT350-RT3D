@@ -75,7 +75,7 @@ namespace nc
 
 
 		// set texture parameters
-		glTexParameteri(m_target, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+		glTexParameteri(m_target, GL_TEXTURE_MIN_FILTER, GL_LINEAR); // pixelated
 		glTexParameteri(m_target, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
 
