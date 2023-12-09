@@ -2,58 +2,900 @@
 	"actors": [
 		{
 			"type": "Actor",
-			"name": "ElvenHouse",
+			"name": "Gate",
 			"persistent": true,
 			"active": true,
 			"transform": {
-				"position": [ -8, -5, -5 ],
-				"scale": [ 0.5, 0.5, 0.5 ],
-				"rotation": [ 0, 0, 0 ]
-			},
-			"components": [
-				{
-					"type": "ModelComponent",
-					"modelName": "fantasy/obj/SF_Bld_Elven_House_01.obj",
-					"materialName": "fantasy/fantasy.mtrl"
-				},
-				{
-					"type": "RotateComponent",
-					"Rotation": [ 0, 1, 0 ]
-				}
-			]
-		},
-		{
-			"type": "Actor",
-			"name": "spheretest",
-			"persistent": true,
-			"active": true,
-			"transform": {
-				"position": [ 0, 0, 0 ],
+				"position": [ 1, -3, 0 ],
 				"scale": [ 1, 1, 1 ],
 				"rotation": [ 0, 0, 0 ]
 			},
 			"components": [
 				{
 					"type": "ModelComponent",
-					"modelName": "models/sphere.obj",
+					"modelName": "fantasy/obj/SF_Bld_Castle_Gate_01.obj",
 					"materialName": "fantasy/fantasy.mtrl"
 				}
 			]
 		},
 		{
 			"type": "Actor",
-			"name": "GobHut",
+			"name": "Wall1",
 			"persistent": true,
 			"active": true,
 			"transform": {
-				"position": [ 1, 0, -5 ],
+				"position": [ -16, -3, -4 ],
+				"scale": [ 1, 0.5, 1 ],
+				"rotation": [ 0, 0, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Bld_Castle_Wall_04.obj",
+					"materialName": "fantasy/fantasy.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Wall2",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ 8, -3, -4 ],
+				"scale": [ 1, 0.5, 1 ],
+				"rotation": [ 0, 0, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Bld_Castle_Wall_04.obj",
+					"materialName": "fantasy/fantasy.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Wall3",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ 18, -3, -4 ],
+				"scale": [ 1, 0.5, 1 ],
+				"rotation": [ 0, 0, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Bld_Castle_Wall_04.obj",
+					"materialName": "fantasy/fantasy.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Wall4",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ 28, -3, -4 ],
+				"scale": [ 1, 0.5, 1 ],
+				"rotation": [ 0, 0, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Bld_Castle_Wall_04.obj",
+					"materialName": "fantasy/fantasy.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Wall5",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ 38, -3, -4 ],
+				"scale": [ 1, 0.5, 1 ],
+				"rotation": [ 0, 0, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Bld_Castle_Wall_04.obj",
+					"materialName": "fantasy/fantasy.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Wall6",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ 8, -3, -4 ],
+				"scale": [ 1, 0.5, 1 ],
+				"rotation": [ 0, 0, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Bld_Castle_Wall_04.obj",
+					"materialName": "fantasy/fantasy.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Wall7",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ -16, -3, -4 ],
+				"scale": [ 1, 0.5, 1 ],
+				"rotation": [ 0, 0, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Bld_Castle_Wall_04.obj",
+					"materialName": "fantasy/fantasy.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Wall8",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ 8, -3, -4 ],
+				"scale": [ 1, 0.5, 1 ],
+				"rotation": [ 0, 0, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Bld_Castle_Wall_04.obj",
+					"materialName": "fantasy/fantasy.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Wall9",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ 18, -3, -4 ],
+				"scale": [ 1, 0.5, 1 ],
+				"rotation": [ 0, 0, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Bld_Castle_Wall_04.obj",
+					"materialName": "fantasy/fantasy.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Wall10",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ 28, -3, -4 ],
+				"scale": [ 1, 0.5, 1 ],
+				"rotation": [ 0, 0, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Bld_Castle_Wall_04.obj",
+					"materialName": "fantasy/fantasy.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Wall11",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ 38, -3, -4 ],
+				"scale": [ 1, 0.5, 1 ],
+				"rotation": [ 0, 0, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Bld_Castle_Wall_04.obj",
+					"materialName": "fantasy/fantasy.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Wall19",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ 0, -3, -40 ],
+				"scale": [ 1, 0.5, 1 ],
+				"rotation": [ 0, 0, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Bld_Castle_Wall_04.obj",
+					"materialName": "fantasy/fantasy.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Wall20",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ 8, -3, -40 ],
+				"scale": [ 1, 0.5, 1 ],
+				"rotation": [ 0, 0, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Bld_Castle_Wall_04.obj",
+					"materialName": "fantasy/fantasy.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Wall21",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ -6, -3, -40 ],
+				"scale": [ 1, 0.5, 1 ],
+				"rotation": [ 0, 0, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Bld_Castle_Wall_04.obj",
+					"materialName": "fantasy/fantasy.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Wall22",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ 28, -3, -40 ],
+				"scale": [ 1, 0.5, 1 ],
+				"rotation": [ 0, 0, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Bld_Castle_Wall_04.obj",
+					"materialName": "fantasy/fantasy.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Wall23",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ 38, -3, -40 ],
+				"scale": [ 1, 0.5, 1 ],
+				"rotation": [ 0, 0, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Bld_Castle_Wall_04.obj",
+					"materialName": "fantasy/fantasy.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Wall24",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ 8, -3, -40 ],
+				"scale": [ 1, 0.5, 1 ],
+				"rotation": [ 0, 0, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Bld_Castle_Wall_04.obj",
+					"materialName": "fantasy/fantasy.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Wall25",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ -16, -3, -40 ],
+				"scale": [ 1, 0.5, 1 ],
+				"rotation": [ 0, 0, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Bld_Castle_Wall_04.obj",
+					"materialName": "fantasy/fantasy.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Wall26",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ 8, -3, -40 ],
+				"scale": [ 1, 0.5, 1 ],
+				"rotation": [ 0, 0, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Bld_Castle_Wall_04.obj",
+					"materialName": "fantasy/fantasy.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Wall27",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ 18, -3, -40 ],
+				"scale": [ 1, 0.5, 1 ],
+				"rotation": [ 0, 0, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Bld_Castle_Wall_04.obj",
+					"materialName": "fantasy/fantasy.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Wall28",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ 28, -3, -40 ],
+				"scale": [ 1, 0.5, 1 ],
+				"rotation": [ 0, 0, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Bld_Castle_Wall_04.obj",
+					"materialName": "fantasy/fantasy.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Wall29",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ 38, -3, -40 ],
+				"scale": [ 1, 0.5, 1 ],
+				"rotation": [ 0, 0, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Bld_Castle_Wall_04.obj",
+					"materialName": "fantasy/fantasy.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Tower",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ 55, -3, -1 ],
 				"scale": [ 1, 1, 1 ],
 				"rotation": [ 0, 0, 0 ]
 			},
 			"components": [
 				{
 					"type": "ModelComponent",
-					"modelName": "fantasy/obj/SF_Bld_Goblin_Hut_03.obj",
+					"modelName": "fantasy/obj/SF_Bld_Castle_Wall_Tower_01.obj",
+					"materialName": "fantasy/fantasy.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Tower",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ -14, -3, -1 ],
+				"scale": [ 1, 1, 1 ],
+				"rotation": [ 0, 0, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Bld_Castle_Wall_Tower_01.obj",
+					"materialName": "fantasy/fantasy.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Wall12",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ 52, -3, -8 ],
+				"scale": [ 1, 0.5, 1 ],
+				"rotation": [ 0, 90, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Bld_Castle_Wall_04.obj",
+					"materialName": "fantasy/fantasy.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Wall13",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ 52, -3, -18 ],
+				"scale": [ 1, 0.5, 1 ],
+				"rotation": [ 0, 90, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Bld_Castle_Wall_04.obj",
+					"materialName": "fantasy/fantasy.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Wall14",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ 52, -3, -28 ],
+				"scale": [ 1, 0.5, 1 ],
+				"rotation": [ 0, 90, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Bld_Castle_Wall_04.obj",
+					"materialName": "fantasy/fantasy.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Wall15",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ 52, -3, -28 ],
+				"scale": [ 1, 0.5, 1 ],
+				"rotation": [ 0, 90, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Bld_Castle_Wall_04.obj",
+					"materialName": "fantasy/fantasy.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Wall16",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ -18, -3, -8 ],
+				"scale": [ 1, 0.5, 1 ],
+				"rotation": [ 0, 90, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Bld_Castle_Wall_04.obj",
+					"materialName": "fantasy/fantasy.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Wall17",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ -18, -3, -18 ],
+				"scale": [ 1, 0.5, 1 ],
+				"rotation": [ 0, 90, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Bld_Castle_Wall_04.obj",
+					"materialName": "fantasy/fantasy.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Wall18",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ -18, -3, -28 ],
+				"scale": [ 1, 0.5, 1 ],
+				"rotation": [ 0, 90, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Bld_Castle_Wall_04.obj",
+					"materialName": "fantasy/fantasy.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Tower",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ 55, -3, -36 ],
+				"scale": [ 1, 1, 1 ],
+				"rotation": [ 0, 0, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Bld_Castle_Wall_Tower_01.obj",
+					"materialName": "fantasy/fantasy.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Tower",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ -14, -3, -36 ],
+				"scale": [ 1, 1, 1 ],
+				"rotation": [ 0, 0, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Bld_Castle_Wall_Tower_01.obj",
+					"materialName": "fantasy/fantasy.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Stones",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ 1, -3, -5 ],
+				"scale": [ 1, 1, 1 ],
+				"rotation": [ 0, 0, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Env_Stonepath_01.obj",
+					"materialName": "fantasy/fantasy.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Stones2",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ 1, -3, -12 ],
+				"scale": [ 1, 1, 1 ],
+				"rotation": [ 0, 0, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Env_Stonepath_02.obj",
+					"materialName": "fantasy/fantasy.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Stones3",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ 1, -3, -19 ],
+				"scale": [ 1, 1, 1 ],
+				"rotation": [ 0, 0, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Env_Stonepath_01.obj",
+					"materialName": "fantasy/fantasy.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Stones4",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ 1, -3, -26 ],
+				"scale": [ 1, 1, 1 ],
+				"rotation": [ 0, 0, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Env_Stonepath_02.obj",
+					"materialName": "fantasy/fantasy.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Tree",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ -12, -3, -34 ],
+				"scale": [ 1, 1, 1 ],
+				"rotation": [ 0, 180, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Env_Swamp_Tree_02.obj",
+					"materialName": "fantasy/fantasy.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "BigTree",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ -6, -3, -22 ],
+				"scale": [ 1, 1, 1 ],
+				"rotation": [ 0, 250, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Env_Tree_Large_01.obj",
+					"materialName": "fantasy/fantasy.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "BigTree2",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ 38, -3, -12 ],
+				"scale": [ 1, 1, 1 ],
+				"rotation": [ 0, 35, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Env_Tree_Large_02.obj",
+					"materialName": "fantasy/fantasy.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "House",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ -12, -3, -14 ],
+				"scale": [ 1, 1, 1 ],
+				"rotation": [ 0, 90, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Bld_House_Red_01.obj",
+					"materialName": "fantasy/fantasy.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "HousePathway",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ -4, -3, -14 ],
+				"scale": [ 1, 1, 1 ],
+				"rotation": [ 0, 90, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Env_Stonepath_01.obj",
+					"materialName": "fantasy/fantasy.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "WeirdHouse",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ -12, -3, -28 ],
+				"scale": [ 1, 1, 1 ],
+				"rotation": [ 0, 90, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Bld_House_Red_02.obj",
+					"materialName": "fantasy/fantasy.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "WeirdHousePathway",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ -4, -3, -28 ],
+				"scale": [ 1, 1, 1 ],
+				"rotation": [ 0, 90, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Env_Stonepath_01.obj",
+					"materialName": "fantasy/fantasy.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "StonesHenges",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ 18, -3, -22 ],
+				"scale": [ 1.65, 1.65, 1.65 ],
+				"rotation": [ 0, 0, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Env_StoneCircle_01.obj",
+					"materialName": "fantasy/fantasy.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Stables",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ 38, -3, -26 ],
+				"scale": [ 1, 1, 1 ],
+				"rotation": [ 0, 270, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Bld_House_Stables_01.obj",
+					"materialName": "fantasy/fantasy.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Windy1",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ 38, -3, -76 ],
+				"scale": [ 4, 4, 4 ],
+				"rotation": [ 0, 220, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Bld_House_Windmill_01.obj",
+					"materialName": "fantasy/fantasy.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Windy2",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ -52, -3, -76 ],
+				"scale": [ 3, 3, 3 ],
+				"rotation": [ 0, 290, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Bld_House_Windmill_01.obj",
+					"materialName": "fantasy/fantasy.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Windy3",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ 78, -3, -36 ],
+				"scale": [ 2.5, 3, 2.5 ],
+				"rotation": [ 0, 170, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Bld_House_Windmill_01.obj",
 					"materialName": "fantasy/fantasy.mtrl"
 				}
 			]
@@ -64,8 +906,8 @@
 			"persistent": true,
 			"active": true,
 			"transform": {
-				"position": [ -20, -3, 0 ],
-				"scale": [ 10, 1, 10 ],
+				"position": [ -24, -3, 6 ],
+				"scale": [ 20, 1, 25 ],
 				"rotation": [ 0, 0, 0 ]
 			},
 			"components": [
@@ -106,7 +948,7 @@
 					"type": "LightComponent",
 					"lightType": "directional",
 					"color": [ 1, 1, 1 ],
-					"intensity": 1,
+					"intensity": 0.5,
 					"range": 200,
 					"innerAngle": 10,
 					"outerAngle": 30,
@@ -141,23 +983,6 @@
 					"type": "CameraController",
 					"speed": 15,
 					"sensitivity": 1
-				}
-			]
-		},
-		{
-			"type": "Actor",
-			"name": "depth_debug",
-			"persistent": true,
-			"transform": {
-				"position": [ 2.4, 1.4, 0 ],
-				"scale": [ 1, 1, 1 ],
-				"rotation": [ 0, 0, 0 ]
-			},
-			"components": [
-				{
-					"type": "ModelComponent",
-					"modelName": "models/quad.obj",
-					"materialName": "materials/sprite.mtrl"
 				}
 			]
 		}

@@ -24,7 +24,7 @@ namespace nc
         ADD_RESOURCE("depth_texture", texture);
 
         auto framebuffer = std::make_shared<Framebuffer>();
-        framebuffer->CreateDepthbuffer(texture);
+        framebuffer->CreateDepthBuffer(texture);
         ADD_RESOURCE("depth_buffer", framebuffer);
 
         auto material = GET_RESOURCE(Material, "materials/sprite.mtrl"); // temp texture
@@ -75,7 +75,7 @@ namespace nc
         for (auto light : lights) {
 
             if (light->castShadow) {
-                //glCullFace(GL_FRONT);
+                glCullFace(GL_FRONT);
                 glm::mat4 shadowMatrix = light->GetShadowMatrix();
                 program->SetUniform("shadowVP", shadowMatrix);
             }

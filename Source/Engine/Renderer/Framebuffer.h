@@ -5,27 +5,27 @@
 
 namespace nc
 {
-	class Texture;
+    class Texture;
 
-	class Framebuffer : public Resource
-	{
-	public:
-		Framebuffer() = default;
-		~Framebuffer();
+    class Framebuffer : public Resource
+    {
+    public:
+        Framebuffer() = default;
+        ~Framebuffer();
 
-		bool Create(std::string filename, ...) override;
-		bool CreateFramebuffer(res_t<Texture> texture);
-		bool CreateDepthbuffer(int width, int height);
-		bool CreateDepthbuffer(res_t<Texture> texture);
+        bool Create(std::string filename, ...) override;
+        bool CreateFramebuffer(res_t<Texture> texture);
+        bool CreateDepthBuffer(int width, int height);
+        bool CreateDepthBuffer(res_t<Texture> texture);
 
-		void Bind();
-		void Unbind();
+        void Bind();
+        void Unbind();
 
-		glm::ivec2 GetSize() const { return m_size; }
+        glm::ivec2 GetSize() const { return m_size; }
 
-	protected:
-		GLuint m_fbo = 0;
-		res_t<Texture> m_texture;
-		glm::ivec2 m_size{ 0 };
-	};
+    protected:
+        GLuint m_fbo = 0;
+        res_t<Texture> m_texture;
+        glm::ivec2 m_size{ 0 };
+    };
 }
