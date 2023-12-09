@@ -22,6 +22,7 @@ layout(binding = 3)uniform sampler2D emissiveTexture;
 
 
 
+
 uniform vec3 ambientLight; //global
 uniform int numLights = 3;
 

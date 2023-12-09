@@ -9,14 +9,16 @@
 
 namespace nc
 {
-    //this is mine
     bool World07::Initialize()
     {
         m_scene = std::make_unique<Scene>();
+        m_scene->Load("scenes/scene_editor.json");
         m_scene->Load("scenes/scene_shadow.json");
         m_scene->Initialize();
-
         
+        m_editor = std::make_unique<Editor>();
+
+        //create depth texture
         auto texture = std::make_shared<Texture>();
         texture->CreateDepthTexture(1024, 1024);
         ADD_RESOURCE("depth_texture", texture);
@@ -51,7 +53,9 @@ namespace nc
         ENGINE.GetSystem<Gui>()->BeginFrame();
 
         m_scene->Update(dt);
-        m_scene->ProcessGui();
+
+        m_editor->Update();
+        m_editor->ProcessGui(m_scene.get());
 
         ENGINE.GetSystem<Gui>()->EndFrame();
     }
@@ -59,10 +63,7 @@ namespace nc
     void World07::Draw(Renderer& renderer)
     {
         // *** PASS 1 ***
-        //m_scene->GetActorByName("postprocess")->active = false;
-
         auto framebuffer = GET_RESOURCE(Framebuffer, "depth_buffer");
-        //renderer.SetViewport(framebuffer->GetSize().x, framebuffer->GetSize().y);
         renderer.SetViewPort(framebuffer->GetSize().x, framebuffer->GetSize().y);
         framebuffer->Bind();
 
@@ -70,9 +71,9 @@ namespace nc
         auto program = GET_RESOURCE(Program, "shaders/shadow_depth.prog");
         program->Use();
 
-
         auto lights = m_scene->GetComponents<LightComponent>();
-        for (auto& light : lights) {
+        for (auto light : lights) {
+
             if (light->castShadow) {
                 //glCullFace(GL_FRONT);
                 glm::mat4 shadowMatrix = light->GetShadowMatrix();
@@ -81,30 +82,25 @@ namespace nc
         }
 
         auto models = m_scene->GetComponents<ModelComponent>();
-        for (auto& model : models) {
-            if (!model->castShadow) continue;
+        for (auto model : models) 
+        {
+            //if (!model->castShadow) continue;
+
             program->SetUniform("model", model->m_owner->transform.GetMatrix());
             model->model->Draw();
         }
-        m_scene->Draw(renderer); //problems arrise here??
 
         framebuffer->Unbind();
 
-        //m_scene->Draw(renderer);
-
-        //framebuffer->Unbind();
-
         // *** PASS 2 ***
-        
-       /* m_scene->GetActorByName("postprocess")->active = true;*/
 
         renderer.ResetViewPort();
         renderer.BeginFrame();
         m_scene->Draw(renderer); 
-        //m_scene->GetActorByName("postprocess")->Draw(renderer); //alternate to m_scene->Draw();
         
-        // post-render
         ENGINE.GetSystem<Gui>()->Draw();
+
+        // post-render
         renderer.EndFrame();
     }
 }

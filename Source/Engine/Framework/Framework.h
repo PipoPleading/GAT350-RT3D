@@ -19,6 +19,7 @@
 #include "Components/CollisionComponent.h"
 
 #include "Factory.h"
+#include "Editor.h"
 #include "Resource/ResourceManager.h"
 #include "Event/EventManager.h"
 

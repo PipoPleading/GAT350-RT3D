@@ -16,17 +16,6 @@ in layout(location = 3) vec4 fshadowcoord;
 
 out layout(location = 0) vec4 ocolor;
 
-layout(binding = 0)uniform sampler2D albedoTexture;
-layout(binding = 1)uniform sampler2D specularTexture;
-layout(binding = 2)uniform sampler2D normalTexture;
-layout(binding = 3)uniform sampler2D emissiveTexture; //4 is cubemap
-layout(binding = 5)uniform sampler2D shadowTexture;
-
-uniform vec3 ambientLight; //global
-uniform int numLights = 3;
-uniform float shadowBias = 0.005f;
-
-
 uniform struct Material
 {
 	uint params;
@@ -53,6 +42,16 @@ uniform struct Light // use this instead of individual variables
 
 } lights[3];
 
+uniform vec3 ambientLight; //global
+uniform int numLights = 3;
+uniform float shadowBias = 0.005;
+
+layout(binding = 0)uniform sampler2D albedoTexture;
+layout(binding = 1)uniform sampler2D specularTexture;
+layout(binding = 2)uniform sampler2D normalTexture;
+layout(binding = 3)uniform sampler2D emissiveTexture; //4 is cubemap
+layout(binding = 5)uniform sampler2D shadowTexture;
+
 float attenuation(in vec3 position1, in vec3 position2, in float range)
 {
 	float distanceSqr = dot(position1 - position2, position1 - position2);
@@ -74,12 +73,12 @@ void phong(in Light light, in vec3 position, in vec3 normal, out vec3 diffuse, o
     // DIFFUSE
     vec3 lightDir = (light.type == DIRECTIONAL) ? normalize(-light.direction) : normalize(light.position - position);
 
-    float spotIntensity = 1.0f;
+    float spotIntensity = 1;
     if(light.type == SPOT)
     {
         float angle = acos(dot(light.direction, -lightDir));
         //if(angle > light.innerAngle) spotIntensity = 0;
-        spotIntensity = smoothstep(light.outerAngle, light.innerAngle, angle);
+        spotIntensity = smoothstep(light.outerAngle + 0.001, light.innerAngle, angle);
     }
 
     float intensity = max(dot(lightDir, normal), 0) * spotIntensity;
@@ -93,14 +92,12 @@ void phong(in Light light, in vec3 position, in vec3 normal, out vec3 diffuse, o
 		//phong
         // vec3 reflection = reflect(-lightDir, normal);
         // intensity = max(dot(reflection, viewDir), 0);
-
 		//blinn-phong
         vec3 h = normalize(viewDir + lightDir);
         intensity = max(dot(h, normal), 0);
 
 		intensity = pow(intensity, material.shininess);
         specular = vec3(intensity * spotIntensity);
-        //ocolor += vec4(diffuse + specular, 1);
     }
 }
 
@@ -125,8 +122,7 @@ void main()
 		float attenuation = (lights[i].type == DIRECTIONAL) ? 1 : attenuation(lights[i].position, fposition, lights[i].range);
  
 		phong(lights[i], fposition, fnormal, diffuse, specular);
-		//if (shadow) to prevent shadow = 0 being multiplied
-		ocolor += ((vec4(diffuse, 1) * albedoColor) + vec4(specular, 1)) * specularColor * lights[i].intensity * attenuation * shadow;
+		ocolor += ((vec4(diffuse, 1) * albedoColor) + (vec4(specular, 1)) * specularColor) * lights[i].intensity * attenuation * shadow;
 	}
 }
 //can add flat vec4 to the front to force flat shading within color rather than phong

@@ -39,7 +39,7 @@ void main()
 	// convert position and normal to world-view space
 	oposition = vec3(modelView  * vec4(vposition, 1));
 	onormal = normalize(mat3(modelView) * vnormal);
-	otexcoord = (vtexcoord * material.tiling) + material.offset;
+	otexcoord = vtexcoord;//(vtexcoord * material.tiling) + material.offset;
 	
 	oshadowcoord = shadowVP * model * vec4(vposition, 1); //from local to world space
 
